@@ -67,27 +67,27 @@ opinion-builder-tools/
 
 ```mermaid
 graph TB
-    subgraph "API Layer"
-        A[FastAPI<br/>/api/v1/topics]
-        B[/api/v1/topics/search]
-        C[POST /api/v1/topics/filter]
-        D[/health]
+    subgraph API_Layer ["API Layer"]
+        A["FastAPI<br/>/api/v1/topics"]
+        B["GET /api/v1/topics/search"]
+        C["POST /api/v1/topics/filter"]
+        D["GET /health"]
     end
 
-    subgraph "Service Layer"
-        E[TopicService]
-        F[FilterService]
-        G[SearchService]
+    subgraph Service_Layer ["Service Layer"]
+        E["TopicService"]
+        F["FilterService"]
+        G["SearchService"]
     end
 
-    subgraph "Data Layer"
-        H[opinion_clob_sdk]
-        I[(In-Memory Cache)]
+    subgraph Data_Layer ["Data Layer"]
+        H["opinion_clob_sdk"]
+        I[("In-Memory Cache")]
     end
 
-    subgraph "WebSocket Layer"
-        J[WebSocket Consumer]
-        K[opinion.trade WS]
+    subgraph WebSocket_Layer ["WebSocket Layer"]
+        J["WebSocket Consumer"]
+        K["opinion.trade WS"]
     end
 
     A --> E
@@ -103,7 +103,7 @@ graph TB
 
     J --> K
     J --> I
-    K -.->|实时更新| I
+    K -.->|"实时更新"| I
 
     style A fill:#e1f5ff
     style B fill:#e1f5ff
